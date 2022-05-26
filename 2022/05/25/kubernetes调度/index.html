@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://example.com/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173941245.png">
 <meta property="og:image" content="http://example.com/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525174011529.png">
 <meta property="article:published_time" content="2022-05-25T09:03:04.428Z">
-<meta property="article:modified_time" content="2022-05-26T10:43:34.454Z">
+<meta property="article:modified_time" content="2022-05-26T11:59:06.969Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525172114834.png">
@@ -317,6 +317,17 @@
 </blockquote>
 <span id="more"></span>
 
+<h3 id="节点标签"><a href="#节点标签" class="headerlink" title="节点标签"></a>节点标签</h3><p>查看现有node及label</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get node --show-labels</span><br></pre></td></tr></table></figure>
+
+<p>添加label</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label nodes &lt;node-name&gt; &lt;label-key&gt;=&lt;label-value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>删除label</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label nodes &lt;node-name&gt; &lt;label-key&gt;-</span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="nodeName"><a href="#nodeName" class="headerlink" title="nodeName"></a><code>nodeName</code></h3><p><code>nodeName</code> 是节点选择约束的最简单方法，但一般不推荐。如果 <code>nodeName</code> 在 <code>PodSpec</code> 中指定了，则它优先于其他的节点选择方法。</p>
 <p>使用 <code>nodeName</code> 来选择节点的一些限制：<br>• 如果指定的节点不存在。<br>• 如果指定的节点没有资源来容纳 pod，则pod 调度失败。<br>• 云环境中的节点名称并非总是可预测或稳定的。<br><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525172114834.png" alt="image-20220525172114834"></p>
 <p>指定的节点没有资源来容纳pod，则pod调度失败</p>
@@ -491,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E5%BA%A6%E5%99%A8%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">调度器介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nodeName"><span class="nav-number">1.1.</span> <span class="nav-text">nodeName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nodeSelector"><span class="nav-number">1.2.</span> <span class="nav-text">nodeSelector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">通过标签选择节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%B2%E5%92%8C%E4%B8%8E%E5%8F%8D%E4%BA%B2%E5%92%8C"><span class="nav-number">1.2.2.</span> <span class="nav-text">亲和与反亲和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E8%8A%82%E7%82%B9%E4%BA%B2%E5%92%8C"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1、节点亲和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81pod-%E4%BA%B2%E5%92%8C%E6%80%A7%E5%92%8C%E5%8F%8D%E4%BA%B2%E5%92%8C%E6%80%A7"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2、pod 亲和性和反亲和性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E8%8A%82%E7%82%B9%E4%BA%B2%E5%92%8C%E6%80%A7"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">3、节点亲和性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1%E3%80%81%E6%B1%A1%E7%82%B9%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="nav-number">1.2.2.3.1.</span> <span class="nav-text">4.1、污点的查询与删除</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2%E3%80%81%E6%B1%A1%E7%82%B9%E7%9A%84%E6%B7%BB%E5%8A%A0%E4%B8%8E%E5%AE%B9%E5%BF%8D"><span class="nav-number">1.2.2.3.2.</span> <span class="nav-text">4.2、污点的添加与容忍</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E5%BA%A6%E5%99%A8%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">调度器介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E6%A0%87%E7%AD%BE"><span class="nav-number">1.1.</span> <span class="nav-text">节点标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nodeName"><span class="nav-number">1.2.</span> <span class="nav-text">nodeName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nodeSelector"><span class="nav-number">1.3.</span> <span class="nav-text">nodeSelector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E8%8A%82%E7%82%B9"><span class="nav-number">1.3.1.</span> <span class="nav-text">通过标签选择节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%B2%E5%92%8C%E4%B8%8E%E5%8F%8D%E4%BA%B2%E5%92%8C"><span class="nav-number">1.3.2.</span> <span class="nav-text">亲和与反亲和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E8%8A%82%E7%82%B9%E4%BA%B2%E5%92%8C"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">1、节点亲和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81pod-%E4%BA%B2%E5%92%8C%E6%80%A7%E5%92%8C%E5%8F%8D%E4%BA%B2%E5%92%8C%E6%80%A7"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">2、pod 亲和性和反亲和性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E8%8A%82%E7%82%B9%E4%BA%B2%E5%92%8C%E6%80%A7"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3、节点亲和性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1%E3%80%81%E6%B1%A1%E7%82%B9%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="nav-number">1.3.2.3.1.</span> <span class="nav-text">4.1、污点的查询与删除</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2%E3%80%81%E6%B1%A1%E7%82%B9%E7%9A%84%E6%B7%BB%E5%8A%A0%E4%B8%8E%E5%AE%B9%E5%BF%8D"><span class="nav-number">1.3.2.3.2.</span> <span class="nav-text">4.2、污点的添加与容忍</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
