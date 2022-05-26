@@ -418,7 +418,11 @@
 
       
         
-          <p>test</p>
+          <h2 id="调度器介绍"><a href="#调度器介绍" class="headerlink" title="调度器介绍"></a>调度器介绍</h2><blockquote>
+<p>调度器通过 <code>kubernetes</code> 的 <code>watch</code> 机制来发现集群中新创建且尚未被调度到 <code>Node</code> 上的 <code>Pod</code>。调度器会将发现的每一个未调度的 <code>Pod</code> 调度到一个合适的 <code>Node</code> 上来运行。</p>
+<p><code>kube-scheduler</code> 是 <code>Kubernetes</code> 集群的默认调度器，并且是集群控制面的一部分。</p>
+<p>在做调度决定时需要考虑的因素包括：单独和整体的资源请求、硬件&#x2F;软件&#x2F;策略限 制、亲和以及反亲和要求、数据局域性、负载间的干扰等等。</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/#more" rel="contents">
