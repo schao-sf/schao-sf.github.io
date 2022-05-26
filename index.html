@@ -418,44 +418,14 @@
 
       
         
-          
-            <span id="more"></span>
-
-<h2 id="调度器介绍"><a href="#调度器介绍" class="headerlink" title="调度器介绍"></a>调度器介绍</h2><blockquote>
-<p>调度器通过 <code>kubernetes</code> 的 <code>watch</code> 机制来发现集群中新创建且尚未被调度到 <code>Node</code> 上的 <code>Pod</code>。调度器会将发现的每一个未调度的 <code>Pod</code> 调度到一个合适的 <code>Node</code> 上来运行。</p>
-<p><code>kube-scheduler</code> 是 <code>Kubernetes</code> 集群的默认调度器，并且是集群控制面的一部分。</p>
-<p>在做调度决定时需要考虑的因素包括：单独和整体的资源请求、硬件&#x2F;软件&#x2F;策略限 制、亲和以及反亲和要求、数据局域性、负载间的干扰等等。</p>
-</blockquote>
-<h3 id="nodeName"><a href="#nodeName" class="headerlink" title="nodeName"></a><code>nodeName</code></h3><p><code>nodeName</code> 是节点选择约束的最简单方法，但一般不推荐。如果 <code>nodeName</code> 在 <code>PodSpec</code> 中指定了，则它优先于其他的节点选择方法。</p>
-<p>使用 <code>nodeName</code> 来选择节点的一些限制：<br>• 如果指定的节点不存在。<br>• 如果指定的节点没有资源来容纳 pod，则pod 调度失败。<br>• 云环境中的节点名称并非总是可预测或稳定的。<br><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525172114834.png" alt="image-20220525172114834"></p>
-<p>指定的节点没有资源来容纳pod，则pod调度失败</p>
-<h3 id="nodeSelector"><a href="#nodeSelector" class="headerlink" title="nodeSelector"></a><code>nodeSelector</code></h3><h4 id="通过标签选择节点"><a href="#通过标签选择节点" class="headerlink" title="通过标签选择节点"></a>通过标签选择节点</h4><p><code>nodeSelector</code> 是节点选择约束的最简单推荐形式。<br>给选择的节点添加标签： </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label nodes server2 disktype=ssd</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525172541122.png" alt="image-20220525172541122"></p>
-<p>如果没有标签会无法运行（pending）</p>
-<h4 id="亲和与反亲和"><a href="#亲和与反亲和" class="headerlink" title="亲和与反亲和"></a>亲和与反亲和</h4><p><code>nodeSelector</code> 提供了一种非常简单的方法来将 pod 约束到具有特定标签的节点上。亲和&#x2F;反亲和功能极大地扩展了你可以表达约束的类型。 可以发现规则是“软”&#x2F;“偏好”，而不是硬性要求，因此，如果调度器无 法满足该要求，仍然调度该 <code>pod</code><br>你可以使用节点上的 <code>pod</code> 的标签来约束，而不是使用节点本身的标签，来允许哪些 <code>pod</code> 可以或者不可以被放置在一起。</p>
-<h5 id="1、节点亲和"><a href="#1、节点亲和" class="headerlink" title="1、节点亲和"></a>1、节点亲和</h5><p>• <code>requiredDuringSchedulingIgnoredDuringExecution</code> 必须满足<br>• <code>preferredDuringSchedulingIgnoredDuringExecution</code> 倾向满足<br>• <code>IgnoreDuringExecution</code> 表示如果在Pod运行期间Node的标签发生变化，导致 亲和性策略不能满足，则继续运行当前的Pod。</p>
-<p><code>nodeaffinity</code>还支持多种规则匹配条件的配置：<br>• In：label 的值在列表内<br>• NotIn：label 的值不在列表内<br>• Gt：label 的值大于设置的值，不支持Pod亲和性<br>• Lt：label 的值小于设置的值，不支持pod亲和性<br>• Exists：设置的label 存在<br>• DoesNotExist：设置的 label 不存在</p>
-<p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173028476.png" alt="image-20220525173028476"></p>
-<h5 id="2、pod-亲和性和反亲和性"><a href="#2、pod-亲和性和反亲和性" class="headerlink" title="2、pod 亲和性和反亲和性"></a>2、pod 亲和性和反亲和性</h5><p><code>pod</code> 亲和性和反亲和性<br>• <code>podAffinity</code> 主要解决POD可以和哪些POD部署在同一个拓扑域中的问题 （拓扑域用主机标签实现，可以是单个主机，也可以是多个主机组成的 cluster、zone等。）<br>• <code>podAntiAffinity</code>主要解决POD不能和哪些POD部署在同一个拓扑域中的问题。 它们处理的是Kubernetes集群内部POD和POD之间的关系。<br>• Pod 间亲和与反亲和在与更高级别的集合（例如 ReplicaSets，StatefulSets， Deployments 等）一起使用时，它们可能更加有用。可以轻松配置一组应位于相同定义拓扑（例如，节点）中的工作负载。</p>
-<p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173214167.png" alt="image-20220525173214167"></p>
-<p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173237352.png" alt="image-20220525173237352"></p>
-<h5 id="3、节点亲和性"><a href="#3、节点亲和性" class="headerlink" title="3、节点亲和性"></a>3、节点亲和性</h5><p>NodeAffinity节点亲和性，是Pod上定义的一种属性，使Pod能够按我们的要求调度到某个Node上，而Taints则恰恰相反，它可以让Node拒绝运行Pod，甚至驱逐Pod。</p>
-<p>• Taints(污点)是Node的一个属性，设置了Taints后，所以Kubernetes是不会将Pod调度到这个Node上的，于是Kubernetes就给Pod设置了个属性Tolerations(容忍)，只要 Pod能够容忍Node上的污点，那么Kubernetes就会忽略Node上的污点，就能够(不是必须)把Pod调度过去。<br>• 可以使用命令 kubectl taint 给节点增加一个 taint：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl taint nodes node1 key=value:NoSchedule //创建</span><br><span class="line">kubectl describe nodes server1 |grep Taints //查询</span><br><span class="line">kubectl taint nodes node1 key:NoSchedule- //删除</span><br></pre></td></tr></table></figure>
-
-<p>其中[effect] 可取值： [ NoSchedule | PreferNoSchedule | NoExecute ]<br>• NoSchedule：POD 不会被调度到标记为 taints 节点。<br>• PreferNoSchedule：NoSchedule 的软策略版本。<br>• NoExecute：该选项意味着一旦 Taint 生效，如该节点内正在运行的 POD 没有对应 Tolerate 设置，会直接被逐出。</p>
-<h6 id="4-1、污点的查询与删除"><a href="#4-1、污点的查询与删除" class="headerlink" title="4.1、污点的查询与删除"></a>4.1、污点的查询与删除</h6><p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173608377.png" alt="image-20220525173608377"></p>
-<p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173627596.png" alt="image-20220525173627596"></p>
-<h6 id="4-2、污点的添加与容忍"><a href="#4-2、污点的添加与容忍" class="headerlink" title="4.2、污点的添加与容忍"></a>4.2、污点的添加与容忍</h6><p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173707203.png" alt="image-20220525173707203"></p>
-<p>tolerations中定义的key、value、effect，要与node上设置的taint保持一直：<br>• 如果 operator 是 Exists ，value可以省略。<br>• 如果 operator 是 Equal ，则key与value之间的关系必须相等。<br>• 如果不指定operator属性，则默认值为Equal。</p>
-<p>还有两个特殊值：<br>• 当不指定key，再配合Exists 就能匹配所有的key与value ，可以容忍所有污点。<br>• 当不指定effect ，则匹配所有的effect。</p>
-<p>在PodSpec中为容器设定容忍标签：</p>
-<p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525173941245.png" alt="image-20220525173941245"></p>
-<p><img src="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/image-20220525174011529.png" alt="image-20220525174011529"></p>
-
-          
+          <p>test</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
