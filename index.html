@@ -229,125 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/30/kubectk%E5%91%BD%E4%BB%A4%E8%A1%A8-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/05/30/kubectk%E5%91%BD%E4%BB%A4%E8%A1%A8-1/" itemprop="url">kubectk命令表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-05-30T16:30:57+08:00">
-                2022-05-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/28/kubectk%E5%91%BD%E4%BB%A4%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -419,7 +300,29 @@
       
         
           
-            
+            <h2 id="kubectl-label"><a href="#kubectl-label" class="headerlink" title="kubectl label"></a><code>kubectl label</code></h2><p>更新（增加、修改或删除）资源上的 label（标签）。</p>
+<ul>
+<li>label 必须以字母或数字开头，可以使用字母、数字、连字符、点和下划线，最长63个字符。</li>
+<li>如果–overwrite 为 true，则可以覆盖已有的 label，否则尝试覆盖 label 将会报错。</li>
+<li>如果指定了–resource-version，则更新将使用此资源版本，否则将使用现有的资源版本。</li>
+</ul>
+<p>语法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label [--overwrite] (-f FILENAME | TYPE NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--resource-version=version]</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>给名为foo的Pod添加label unhealthy&#x3D;true。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods foo unhealthy=true</span><br></pre></td></tr></table></figure>
+
+<p>给名为foo的Pod修改label 为 ‘status’ &#x2F; value ‘unhealthy’，且覆盖现有的value。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label --overwrite pods foo status=unhealthy</span><br></pre></td></tr></table></figure>
+
+<p>给 namespace 中的所有 pod 添加 label</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods --all status=unhealthy</span><br></pre></td></tr></table></figure>
+
+<p>仅当resource-version&#x3D;1时才更新 名为foo的Pod上的label。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods foo status=unhealthy --resource-version=1</span><br></pre></td></tr></table></figure>
+
+<p>删除名为“bar”的label 。（使用“ - ”减号相连）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods foo bar-</span><br></pre></td></tr></table></figure>
           
         
       
@@ -628,7 +531,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
