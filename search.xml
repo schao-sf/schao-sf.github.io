@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>kubectk命令表</title>
-    <url>/2022/05/28/kubectk%E5%91%BD%E4%BB%A4%E8%A1%A8/</url>
+    <url>/2022/05/28/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A8/</url>
     <content><![CDATA[<span id="more"></span>
 
 <h2 id="kubectl-label"><a href="#kubectl-label" class="headerlink" title="kubectl label"></a><code>kubectl label</code></h2><p>更新（增加、修改或删除）资源上的 label（标签）。</p>
