@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="kubectl label">
+<meta name="description" content="https:&#x2F;&#x2F;jimmysong.io&#x2F;kubernetes-handbook&#x2F;practice&#x2F;node-installation.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kubectl命令表">
-<meta property="og:url" content="http://example.com/2022/05/28/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A8/index.html">
+<meta property="og:title" content="kubernetes资源">
+<meta property="og:url" content="http://example.com/2022/06/06/kubernetes%E8%B5%84%E6%BA%90/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="kubectl label">
+<meta property="og:description" content="https:&#x2F;&#x2F;jimmysong.io&#x2F;kubernetes-handbook&#x2F;practice&#x2F;node-installation.html">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-28T03:37:42.000Z">
-<meta property="article:modified_time" content="2022-06-01T01:12:51.471Z">
+<meta property="article:published_time" content="2022-06-06T12:55:23.000Z">
+<meta property="article:modified_time" content="2022-06-06T12:55:38.056Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2022/05/28/kubectl命令表/"/>
+  <link rel="canonical" href="http://example.com/2022/06/06/kubernetes资源/"/>
 
 
 
 
 
-  <title>kubectl命令表 | Hexo</title>
+  <title>kubernetes资源 | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/28/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/06/kubernetes%E8%B5%84%E6%BA%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kubectl命令表</h1>
+          <h1 class="post-title" itemprop="name headline">kubernetes资源</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-05-28T11:37:42+08:00">
-                2022-05-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-06-06T20:55:23+08:00">
+                2022-06-06
               </time>
             
 
@@ -299,31 +299,8 @@
       
 
       
-        <h2 id="kubectl-label"><a href="#kubectl-label" class="headerlink" title="kubectl label"></a><code>kubectl label</code></h2><span id="more"></span>
+        <p><a target="_blank" rel="noopener" href="https://jimmysong.io/kubernetes-handbook/practice/node-installation.html">https://jimmysong.io/kubernetes-handbook/practice/node-installation.html</a></p>
 
-<p>更新（增加、修改或删除）资源上的 label（标签）。</p>
-<ul>
-<li>label 必须以字母或数字开头，可以使用字母、数字、连字符、点和下划线，最长63个字符。</li>
-<li>如果–overwrite 为 true，则可以覆盖已有的 label，否则尝试覆盖 label 将会报错。</li>
-<li>如果指定了–resource-version，则更新将使用此资源版本，否则将使用现有的资源版本。</li>
-</ul>
-<p>语法</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label [--overwrite] (-f FILENAME | TYPE NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--resource-version=version]</span><br></pre></td></tr></table></figure>
-
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>给名为foo的Pod添加label unhealthy&#x3D;true。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods foo unhealthy=true</span><br></pre></td></tr></table></figure>
-
-<p>给名为foo的Pod修改label 为 ‘status’ &#x2F; value ‘unhealthy’，且覆盖现有的value。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label --overwrite pods foo status=unhealthy</span><br></pre></td></tr></table></figure>
-
-<p>给 namespace 中的所有 pod 添加 label</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods --all status=unhealthy</span><br></pre></td></tr></table></figure>
-
-<p>仅当resource-version&#x3D;1时才更新 名为foo的Pod上的label。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods foo status=unhealthy --resource-version=1</span><br></pre></td></tr></table></figure>
-
-<p>删除名为“bar”的label 。（使用“ - ”减号相连）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl label pods foo bar-</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -347,8 +324,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2022/05/28/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A8/" rel="next" title="kubectl命令表">
+                <i class="fa fa-chevron-left"></i> kubectl命令表
               </a>
             
           </div>
@@ -356,10 +333,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/06/06/kubernetes%E8%B5%84%E6%BA%90/" rel="prev" title="kubernetes资源">
-                kubernetes资源 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -411,17 +384,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -463,22 +427,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kubectl-label"><span class="nav-number">1.</span> <span class="nav-text">kubectl label</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
