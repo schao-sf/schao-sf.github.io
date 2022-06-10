@@ -30,6 +30,22 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kubectl label pods foo bar-</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
+    <title>kubernetes操作</title>
+    <url>/2022/06/07/kubernetes%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h3 id="授予用户权限"><a href="#授予用户权限" class="headerlink" title="授予用户权限"></a>授予用户权限</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;export KUBECONFIG=/etc/kubernetes/admin.conf&quot; &gt;&gt; ~/.bash_profile</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="登录pod里面容器"><a href="#登录pod里面容器" class="headerlink" title="登录pod里面容器"></a>登录pod里面容器</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kubectl exec $pod -n $namespace -c $container -i -t -- bash：进入指定pod的指定容器（查看pod内有哪些容器的命令：kubectl get pods $pod -n $namespace -o jsonpath=&#123;.spec.containers[*].name&#125;）</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>kubernetes操作</title>
+    <url>/2022/06/08/kubernetes%E6%93%8D%E4%BD%9C-1/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title></title>
     <url>/2022/05/25/kubernetes%E8%B0%83%E5%BA%A6/</url>
     <content><![CDATA[<h2 id="调度器介绍"><a href="#调度器介绍" class="headerlink" title="调度器介绍"></a>调度器介绍</h2><blockquote>
@@ -84,6 +100,7 @@
     <title>kubernetes资源</title>
     <url>/2022/06/06/kubernetes%E8%B5%84%E6%BA%90/</url>
     <content><![CDATA[<p><a href="https://jimmysong.io/kubernetes-handbook/practice/node-installation.html">https://jimmysong.io/kubernetes-handbook/practice/node-installation.html</a></p>
+<p><a href="https://github.com/huweihuang/kubernetes-notes">huweihuang&#x2F;kubernetes-notes: Kubernetes 学习笔记-https://www.huweihuang.com/kubernetes-notes/ (github.com)</a></p>
 ]]></content>
   </entry>
 </search>
