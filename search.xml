@@ -301,7 +301,9 @@
   <entry>
     <title>kubernetes笔记</title>
     <url>/2022/08/22/kubernetes%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="kubernetes三种IP"><a href="#kubernetes三种IP" class="headerlink" title="kubernetes三种IP"></a>kubernetes三种IP</h2><ul>
+    <content><![CDATA[<h2 id="kubernetes三种IP"><a href="#kubernetes三种IP" class="headerlink" title="kubernetes三种IP"></a>kubernetes三种IP</h2><span id="more"></span>
+
+<ul>
 <li><p>Node IP：Node节点的IP地址，即物理网卡的IP地址。</p>
 <blockquote>
 <p>可以是物理机的IP（也可能是虚拟机IP）。每个Service都会在Node节点上开通一个端口，外部可以通过NodeIP:NodePort即可访问Service里的Pod,和我们访问服务器部署的项目一样，IP:端口&#x2F;项目名</p>

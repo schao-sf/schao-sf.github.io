@@ -551,33 +551,14 @@
 
       
         
-          
-            <h2 id="kubernetes三种IP"><a href="#kubernetes三种IP" class="headerlink" title="kubernetes三种IP"></a>kubernetes三种IP</h2><ul>
-<li><p>Node IP：Node节点的IP地址，即物理网卡的IP地址。</p>
-<blockquote>
-<p>可以是物理机的IP（也可能是虚拟机IP）。每个Service都会在Node节点上开通一个端口，外部可以通过NodeIP:NodePort即可访问Service里的Pod,和我们访问服务器部署的项目一样，IP:端口&#x2F;项目名</p>
-</blockquote>
-</li>
-<li><p>Pod IP：Pod的IP地址，即docker容器的IP地址，此为虚拟IP地址。</p>
-<blockquote>
-<p>Pod IP是每个Pod的IP地址，他是Docker Engine根据docker网桥的IP地址段进行分配的，通常是一个虚拟的二层网络</p>
-<p>同Service下的pod可以直接根据PodIP相互通信<br>不同Service下的pod在集群间pod通信要借助于 cluster ip<br>pod和集群外通信，要借助于node ip</p>
-</blockquote>
-</li>
-<li><p>Cluster IP：Service的IP地址，此为虚拟IP地址。</p>
-<blockquote>
-<p>Service的IP地址，此为虚拟IP地址。外部网络无法ping通，只有kubernetes集群内部访问使用。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="查看集群节点开放端口"><a href="#查看集群节点开放端口" class="headerlink" title="查看集群节点开放端口"></a>查看集群节点开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss -tnl    查看k8s-node1，k8s-node2没有创建pod的时候的开放的端口</span><br></pre></td></tr></table></figure>
-
-<h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><p>port<br>K8s集群内部服务访问service的入口。是service暴露在Cluster上的端口，ClusterIP:Port。如下面的yaml配置文件所示，K8s集群内部节点可以通过30080端口访问Nginx服务，然而外部网络还是不能够访问到服务，因为nodePort参数没有配置。</p>
-<p>targetPort</p>
-<p>容器的端口，也是最终底层的服务所提供的端口，所以说targetPod也就是Pod的端口。从port或者是nodePort进入的流量，经过路由转发之后，最终都会都通过targetPort进入到Pod中。</p>
-<p><font color="red">先查看svc</font></p>
-
-          
+          <h2 id="kubernetes三种IP"><a href="#kubernetes三种IP" class="headerlink" title="kubernetes三种IP"></a>kubernetes三种IP</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/08/22/kubernetes%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
