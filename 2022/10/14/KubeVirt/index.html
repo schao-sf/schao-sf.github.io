@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="参考文档：Kubernetes 管理虚拟机之 KubeVirt - 知乎 (zhihu.com) [没接触过kubevirt？]15分钟快速入门kubevirt-阿里云开发者社区 (aliyun.com) kubevirt以容器方式运行虚拟机 - 敏的博客 | Min’s Blog (remimin.github.io) 容器 &amp; 虚拟机随着Docker和Kubernetes生态圈的发展，">
+<meta name="description" content="参考文档：Kubernetes 管理虚拟机之 KubeVirt - 知乎 (zhihu.com) [没接触过kubevirt？]15分钟快速入门kubevirt-阿里云开发者社区 (aliyun.com) kubevirt以容器方式运行虚拟机 - 敏的博客 | Min’s Blog (remimin.github.io)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KubeVirt">
 <meta property="og:url" content="http://example.com/2022/10/14/KubeVirt/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="参考文档：Kubernetes 管理虚拟机之 KubeVirt - 知乎 (zhihu.com) [没接触过kubevirt？]15分钟快速入门kubevirt-阿里云开发者社区 (aliyun.com) kubevirt以容器方式运行虚拟机 - 敏的博客 | Min’s Blog (remimin.github.io) 容器 &amp; 虚拟机随着Docker和Kubernetes生态圈的发展，">
+<meta property="og:description" content="参考文档：Kubernetes 管理虚拟机之 KubeVirt - 知乎 (zhihu.com) [没接触过kubevirt？]15分钟快速入门kubevirt-阿里云开发者社区 (aliyun.com) kubevirt以容器方式运行虚拟机 - 敏的博客 | Min’s Blog (remimin.github.io)">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/10/14/KubeVirt/architecture.png">
 <meta property="og:image" content="http://example.com/2022/10/14/KubeVirt/vm-networking.png">
 <meta property="og:image" content="http://example.com/2022/10/14/KubeVirt/0cd0551b6f9f46bea54c1a025351faf5.png">
 <meta property="og:image" content="http://example.com/2022/10/14/KubeVirt/c962dacd9f794ad9b486efd50cfd1f78.png">
 <meta property="article:published_time" content="2022-10-14T06:56:33.000Z">
-<meta property="article:modified_time" content="2022-10-20T06:08:43.350Z">
+<meta property="article:modified_time" content="2022-10-20T07:22:09.478Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/10/14/KubeVirt/architecture.png">
@@ -307,6 +307,8 @@
         <p>参考文档：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/113568026">Kubernetes 管理虚拟机之 KubeVirt - 知乎 (zhihu.com)</a></p>
 <p>[<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/888553">没接触过kubevirt？]15分钟快速入门kubevirt-阿里云开发者社区 (aliyun.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://remimin.github.io/2018/09/14/kubevirt/">kubevirt以容器方式运行虚拟机 - 敏的博客 | Min’s Blog (remimin.github.io)</a></p>
+<span id="more"></span>
+
 <h2 id="容器-amp-虚拟机"><a href="#容器-amp-虚拟机" class="headerlink" title="容器 &amp; 虚拟机"></a>容器 &amp; 虚拟机</h2><p>随着<code>Docker</code>和<code>Kubernetes</code>生态圈的发展，云计算领域对容器的兴趣达到了狂热的程度。 容器技术为应用程序提供了隔离的运行空间，每个容器内都包含一个独享的完整用户环境空间， 容器内的变动不会影响其他容器的运行环境。因为容器之间共享同一个系统内核，当同一个库被多个容器使用时， 内存的使用效率会得到提升。基于物理主机操作系统内核的，那就意味着对于不同内核或者操作系统需求的应用是不可能部署在一起的。</p>
 <p>虚拟化技术则是提供了一个完整的虚拟机，为用户提供了不依赖于宿主机内核的运行环境。 对于从物理服务器过渡到虚拟服务器是一个很自然的过程，从用户使用上并没有什么区别。 容器与虚拟机当前看来并不是一个非此即彼的关系，至于采用那种方式去运行应用需要根据具体需求去决定。 在这里笔者并不讨论这个问题，且笔者仅是容器服务的入门玩家，内容若有不准确之处还望斧正。</p>
 <p><code>kubernetes</code>提供了较灵活的容器调度和管理能力，那么虚拟机能否像容器一样被<code>k8s</code>管理调度， 充分利用<code>k8s</code>的故障发现，滚动升级等管理机制呢。 在Linux操作系统中虚拟机本质上就是一个操作系统进程应该是可以运行在容器内部的。</p>
