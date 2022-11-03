@@ -329,4 +329,13 @@
 <p><font color="red">先查看svc</font></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>configmap</title>
+    <url>/2022/11/03/configmap/</url>
+    <content><![CDATA[<h4 id="configmap配置管理"><a href="#configmap配置管理" class="headerlink" title="configmap配置管理"></a>configmap配置管理</h4><blockquote>
+<p>Configmap 是 k8s 中的资源对象，用于保存非机密性的配置的，数据可以用 key&#x2F;value 键值对的形式保存，也可通过文件的形式保存。</p>
+</blockquote>
+<p>–more</p>
+]]></content>
+  </entry>
 </search>
